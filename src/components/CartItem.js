@@ -1,10 +1,14 @@
+//* @CSS
 import { Badge, Box, Button, Container, Flex, Grid, Icon, Image, Text } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
+
+//* redux & redux actions
 import { useDispatch, useSelector } from 'react-redux';
-import { decreaseCartQuantity, increaseCartQuantity, removeDataFromCart } from '../Redux/action';
+import { decreaseCartQuantity, deleteAllFromCart, increaseCartQuantity, removeDataFromCart } from '../Redux/action';
+
+//* Currency formatter 
 import { formatCurrency } from '../utilities/formatCurrency';
 import { AiFillStar } from 'react-icons/ai';
-import LoadingScreen from './LoadingScreen';
 
 const CartItem = () => {
     const cartData = useSelector(state => state.cartData);
@@ -12,18 +16,30 @@ const CartItem = () => {
 
     return (
         <Container maxW='container.xl'>
+
             <Text fontSize={ '4xl' }>Cart</Text>
 
+            <Flex justify='flex-end' >
+                <Button bg='red.500' disabled={ cartData.length < 1 } color='white' _hover={ { color: 'red', bg: 'white', border: '1px solid red' } } m='2' onClick={ () => dispatch(deleteAllFromCart()) }>DELETE ALL
+                </Button>
+            </Flex>
+
+
             <Grid templateColumns='repeat(4, 1fr)' gap={ 6 } pt='10' >
+
                 { cartData && cartData.map((item) => (
                     <Box key={ item.id } borderWidth='1px' borderRadius='lg' overflow='hidden'>
+
                         <Image src={ item.image } alt={ item.category } h='200px' w='full' p='2'
                             objectFit='contain' />
+
                         <Box p='6'>
                             <Box display='flex' alignItems='baseline'>
+
                                 <Badge borderRadius='full' px='2' colorScheme='teal'>
                                     Category
                                 </Badge>
+
                                 <Box
                                     color='gray.500'
                                     fontWeight='semibold'
@@ -62,13 +78,22 @@ const CartItem = () => {
                                 <Box as='span' ml='2' color='gray.600' fontSize='sm'>
                                     { item.rating.count } reviews
                                 </Box>
+                            
                             </Box>
+
+
                             <Flex justify='center' align='center' mt={ 5 }>
+
                                 <Button w='container.sm' bg='blue.600' color='white' _hover={ { color: 'blue.500', bg: "white", border: '1px solid blue' } } m='2' disabled={ item.quantity === 1 } onClick={ () => dispatch(decreaseCartQuantity(item.id)) }>-</Button>
+
                                 <Text fontSize='3xl' m='2'>{ item.quantity }</Text>
+
                                 <Button w='container.sm' bg='blue.600' color='white' _hover={ { color: 'blue.500', bg: "white", border: '1px solid blue' } } onClick={ () => dispatch(increaseCartQuantity(item.id)) } m='2'>+</Button>
+
                             </Flex>
+
                             <Button w='full' bg='red.500' color='white' _hover={ { color: 'red', bg: 'white', border: '1px solid red' } } m='2' onClick={ () => dispatch(removeDataFromCart(item.id)) }>DELETE</Button>
+
                         </Box>
                     </Box>
                 )) }
@@ -81,24 +106,3 @@ const CartItem = () => {
 
 export default CartItem;
 
-/* 
-  <Container maxW='full'>
-            <Text fontSize={ '6xl' }>Cart </Text>
-            <Grid templateColumns='repeat(5, 1fr)'>
-                { cartData.length > 0 ? cartData.map((e) => (
-                    <Box>
-                        <Image src={ e.image } alt={ e.category } h='50px' w='full' p='2'
-                            objectFit='contain' />
-                        <Text> { e.price }</Text>
-                        <Flex justify='center' align='center'>
-                            <Button onClick={ () => dispatch(increaseCartQuantity(e.id)) }>+</Button>
-                            <Text>{ e.quantity }</Text>
-                            <Button disabled={ e.quantity === 1 } onClick={ () => dispatch(decreaseCartQuantity(e.id)) }>-</Button>
-                        </Flex>
-                        <Button onClick={ () => dispatch(removeDataFromCart(e.id)) }>DELETE</Button>
-                    </Box>
-
-                )) : null }
-            </Grid>
-        </Container>
-*/

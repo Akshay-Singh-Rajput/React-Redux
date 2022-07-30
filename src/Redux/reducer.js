@@ -1,4 +1,4 @@
-import { ALL_PRODUCTS, CART_PRODUCTS, REMOVE_DATA_FROM_CART, INCREASE_CART_QUANTITY, DECREASE_CART_QUANTITY } from "./action";
+import { ALL_PRODUCTS, CART_PRODUCTS, REMOVE_DATA_FROM_CART, INCREASE_CART_QUANTITY, DECREASE_CART_QUANTITY, REMOVE_ALL_FROM_CART } from "./action";
 
 const initialState = {
     storeData: [],
@@ -23,6 +23,7 @@ export const reducer = (state = initialState, { type, payload }) => {
             };
         };
 
+        //* increase quantity
         case INCREASE_CART_QUANTITY: {
             return {
                 ...state,
@@ -31,6 +32,7 @@ export const reducer = (state = initialState, { type, payload }) => {
             };
         };
 
+        //* decrease quantity
         case DECREASE_CART_QUANTITY: {
             return {
                 ...state,
@@ -44,6 +46,15 @@ export const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 cartData: state.cartData.filter(item => item.id !== payload)
+
+            };
+        }
+
+        //* remove All item from cart
+        case REMOVE_ALL_FROM_CART: {
+            return {
+                ...state,
+                cartData: []
 
             };
         }
