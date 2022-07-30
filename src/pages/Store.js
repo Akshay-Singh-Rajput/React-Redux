@@ -1,4 +1,4 @@
-import { Badge, Box, Image, Icon, Grid, Container, Button, Text } from '@chakra-ui/react';
+import { Badge, Box, Image, Icon, Grid, Container, Button, Text, Flex } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { formatCurrency } from '../utilities/formatCurrency';
@@ -106,7 +106,7 @@ const Shop = () => {
                                     </Box>
                                 </Box>
                                 <Box w='full' as='button' mt={ 10 } onClick={ () => handleCart(item) }>
-                                    <Button w='full' bg='blue.600' color='white' _hover={ { color: 'blue.500', bg: "white", border: '1px solid blue' } }>+ADD TO CART</Button>
+                                    <Button w='full' bg='blue.600' color='white' _hover={ { color: 'blue.500', bg: "white", border: '1px solid skyblue' } }>+ADD TO CART</Button>
                                 </Box>
                             </Box>
                         </Box>

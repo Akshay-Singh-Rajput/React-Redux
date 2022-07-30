@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Container, Flex, HStack, Icon, Link, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, HStack, Icon, Link, Text, Tooltip } from '@chakra-ui/react';
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
@@ -33,37 +33,41 @@ const Navbar = () => {
                     </Box>
                 </HStack>
                 <HStack>
+
+
                     { total > 0 && <Text fontWeight='bold' mr='10'>
                         Total{ " " }
                         { formatCurrency(total) }
                     </Text> }
                     { cartQuantity > 0 &&
-                        <Button
-                            onClick={ () => navigate('/cart') }
-                            style={ { width: "3rem", height: "3rem", position: "relative" } }
-                            colorScheme='blue'
-                            borderRadius="full"
-                        >
-                            <Icon boxSize={ 6 } as={ AiOutlineShoppingCart } />
-
-                            <Flex
+                        <Tooltip label='Cart' placement='bottom' bg='blue.500'>
+                            <Button
+                                onClick={ () => navigate('/cart') }
+                                style={ { width: "3rem", height: "3rem", position: "relative" } }
+                                colorScheme='blue'
                                 borderRadius="full"
-                                justify='center'
-                                align='center'
-                                bg='red'
-                                style={ {
-                                    color: "white",
-                                    width: "1.5rem",
-                                    height: "1.5rem",
-                                    position: "absolute",
-                                    bottom: 0,
-                                    right: 0,
-                                    transform: "translate(25%, 25%)",
-                                } }
                             >
-                                { cartQuantity }
-                            </Flex>
-                        </Button>
+                                <Icon boxSize={ 6 } as={ AiOutlineShoppingCart } />
+
+                                <Flex
+                                    borderRadius="full"
+                                    justify='center'
+                                    align='center'
+                                    bg='red'
+                                    style={ {
+                                        color: "white",
+                                        width: "1.5rem",
+                                        height: "1.5rem",
+                                        position: "absolute",
+                                        bottom: 0,
+                                        right: 0,
+                                        transform: "translate(25%, 25%)",
+                                    } }
+                                >
+                                    { cartQuantity }
+                                </Flex>
+                            </Button>
+                        </Tooltip>
                     }
                 </HStack>
 

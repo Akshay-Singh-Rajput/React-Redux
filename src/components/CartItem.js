@@ -15,7 +15,7 @@ const CartItem = () => {
             <Text fontSize={ '4xl' }>Cart</Text>
 
             <Grid templateColumns='repeat(4, 1fr)' gap={ 6 } pt='10' >
-                { cartData ? cartData.map((item) => (
+                { cartData && cartData.map((item) => (
                     <Box key={ item.id } borderWidth='1px' borderRadius='lg' overflow='hidden'>
                         <Image src={ item.image } alt={ item.category } h='200px' w='full' p='2'
                             objectFit='contain' />
@@ -71,7 +71,7 @@ const CartItem = () => {
                             <Button w='full' bg='red.500' color='white' _hover={ { color: 'red', bg: 'white', border: '1px solid red' } } m='2' onClick={ () => dispatch(removeDataFromCart(item.id)) }>DELETE</Button>
                         </Box>
                     </Box>
-                )) : <LoadingScreen  /> }
+                )) }
             </Grid>
         </Container>
 

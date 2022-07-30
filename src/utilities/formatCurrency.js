@@ -1,5 +1,5 @@
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
-    currency: "Inr", style: "currency"
+    currency: "inr", style: "currency"
 });
 
 export function formatCurrency(number) {
