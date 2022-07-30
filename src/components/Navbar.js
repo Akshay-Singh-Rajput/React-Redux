@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Button, Container, Flex, HStack, Icon, Link, Text, Tooltip } from '@chakra-ui/react';
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 // * Redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { formatCurrency } from '../utilities/formatCurrency';
 const Navbar = () => {
     let cartItems = useSelector(store => store.cartData);
@@ -23,13 +23,13 @@ const Navbar = () => {
             <Flex justify='space-between' p='3' w='96%' m='auto'>
                 <HStack spacing='24px' >
                     <Box>
-                        <Link to='/' as={ NavLink } >Home</Link>
+                        <Link to='/' _activeLink={ { color: 'blue.600', fontSize: '1.2rem', letterSpacing: '1px' } } as={ NavLink } >Home</Link>
                     </Box>
                     <Box>
-                        <Link to='/about' as={ NavLink } >About</Link>
+                        <Link to='/about' _activeLink={ { color: 'blue.600', fontSize: '1.2rem', letterSpacing: '1px' } } as={ NavLink } >About</Link>
                     </Box>
                     <Box>
-                        <Link to='/store' as={ NavLink } >Store</Link>
+                        <Link to='/store' _activeLink={ { color: 'blue.600', fontSize: '1.2rem', letterSpacing: '1px' } } as={ NavLink } >Store</Link>
                     </Box>
                 </HStack>
                 <HStack>

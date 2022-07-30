@@ -54,7 +54,7 @@ const Shop = () => {
 
     return (
         <Container maxW='container.xl'>
-            <Text fontSize={ '4xl' }>Store </Text>
+            <Text fontSize={ '6xl' }>Store </Text>
             { !loading ?
                 <Grid templateColumns='repeat(4, 1fr)' gap={ 6 } pt='10' >
                     { products && products.map((item) => (
