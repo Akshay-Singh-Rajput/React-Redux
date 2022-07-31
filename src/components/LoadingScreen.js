@@ -1,16 +1,16 @@
-import { Box, Flex, Image } from "@chakra-ui/react";
-import React from "react";
+import { Box, Center, Flex, Spinner } from "@chakra-ui/react";
 
 const LoadingScreen = () => {
     return (
-        <Flex justify='center' align='center' h='full'>
-            <Box>
-                <Image w='sm' bg='transparent'
-                    src="http://cdn.home-designing.com/wp-content/uploads/2018/03/loading.gif"
-                    alt="loader"
+            <Center>
+                <Spinner
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='blue.500'
+                    size='xl'
                 />
-            </Box>
-        </Flex>
+            </Center>
     );
 };
 

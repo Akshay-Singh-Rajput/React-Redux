@@ -1,5 +1,5 @@
 //* @CSS
-import { Badge, Box, Button, Container, Flex, Grid, Icon, Image, Text } from '@chakra-ui/react';
+import { Badge, Box, Button, Container, Flex, Grid, Icon, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 
 //* redux & redux actions
@@ -25,7 +25,7 @@ const CartItem = () => {
             </Flex>
 
 
-            <Grid templateColumns='repeat(4, 1fr)' gap={ 6 } pt='10' >
+            <SimpleGrid columns={ [ 1, 2, 3, 4 ] } spacing='40px' pt='10'  >
 
                 { cartData && cartData.map((item) => (
                     <Box key={ item.id } borderWidth='1px' borderRadius='lg' overflow='hidden'>
@@ -97,7 +97,7 @@ const CartItem = () => {
                         </Box>
                     </Box>
                 )) }
-            </Grid>
+            </SimpleGrid>
         </Container>
 
     );

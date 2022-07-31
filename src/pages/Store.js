@@ -1,5 +1,5 @@
 //* @CSS
-import { Badge, Box, Image, Icon, Grid, Container, Button, Text } from '@chakra-ui/react';
+import { Badge, Box, Image, Icon, Grid, Container, Button, Text, SimpleGrid } from '@chakra-ui/react';
 
 import React, { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
@@ -34,7 +34,8 @@ const Shop = () => {
     };
 
     useEffect(() => {
-        setTimeout(() => setLoading(false), setProducts(storeData), 700);
+        setTimeout(() => setLoading(false), 300);
+        setProducts(storeData)
     }, []);
 
     return (
@@ -43,7 +44,7 @@ const Shop = () => {
             <Text fontSize={ '6xl' }>Store </Text>
 
             { !loading ?
-                <Grid templateColumns='repeat(4, 1fr)' gap={ 6 } pt='10' >
+                <SimpleGrid columns={ [ 1, 2, 3, 4 ] } spacing='40px' pt='10' >
                     { products && products.map((item) => (
                         <Box key={ item.id } borderWidth='1px' borderRadius='lg' overflow='hidden'>
 
@@ -106,7 +107,7 @@ const Shop = () => {
                         </Box>
                     ))
 
-                    }</Grid>
+                    }</SimpleGrid>
 
                 : <LoadingScreen />
             }
